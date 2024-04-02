@@ -1,25 +1,29 @@
-task1
-Homepage Design
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Conference on Big Data and Computing</title>
+</head>
+<body>
+  <header>
+    <h1>International Conference on Big Data and Computing</h1>
+    <img src="logo.png" alt="Conference Logo">
+  </header>
+  <main>
+    <h2>Conference Objectives</h2>
+    <p>Insert engaging content describing the conference objectives here.</p>
 
-Header (2 Marks):
+    <h2>Keynote Speakers</h2>
+    <p>List the esteemed keynote speakers for the conference here.</p>
 
-A prominent banner displayed at the top of the webpage will showcase the conference title in bold text: "International Conference on Big Data and Computing."
+    <h2>Agenda Highlights</h2>
+    <p>Provide a glimpse of the exciting agenda at the conference here.</p>
 
-Logo (2 Marks):
-
-Following the header, the official conference logo will be displayed prominently. (Following the assumption that you have access to the logo in the exam question folder).
-
-Engaging Content (2 Marks):
-
-The central section of the homepage will feature captivating content that outlines the conference's objectives, highlights the esteemed keynote speakers, and provides a glimpse into the agenda's key highlights. (Please refer to the provided text in the exam question folder for this section's content).
-
-Registration Link (2 Marks):
-
-A clear and prominent call to action button will be positioned strategically on the homepage. This button will be labeled "Register Now" and will link directly to the dedicated registration form page.
-
-Footer (2 Marks):
-
-The bottom portion of the webpage will house a footer section displaying the following text: "The 2nd International Conference on Big Data and Computing."
-
-Note: This design emphasizes a user-friendly layout with clear information and a seamless transition to the registration process through the strategically placed registration button.
-
+    <a href="registration.html">Register Now!</a>
+  </main>
+  <footer>
+    <p>The 2nd International Conference on Big Data and Computing</p>
+  </footer>
+</body>
+</html>

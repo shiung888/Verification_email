@@ -1,18 +1,86 @@
+Task2
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>International Conference on Big Data and Computing</title>
+</head>
+<body>
+  <header>
+    <h1>International Conference on Big Data and Computing</h1>
+    <img src="logo.png" alt="Conference Logo">
+  </header>
+  <main>
+    <h2>Conference Objectives</h2>
+    <p>Insert engaging content describing the conference objectives here.</p>
+
+    <h2>Keynote Speakers</h2>
+    <p>List the esteemed keynote speakers for the conference here.</p>
+
+    <h2>Agenda Highlights</h2>
+    <p>Provide a glimpse of the exciting agenda at the conference here.</p>
+
+    <a href="registration.html">Register Now!</a>
+  </main>
+  <footer>
+    <p>The 2nd International Conference on Big Data and Computing</p>
+  </footer>
+</body>
+</html>
+
+Task3
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>International Conference on Big Data and Computing - Registration</title>
+  <script>
+    function validateForm() {
+      let name = document.getElementById('name').value;
+      let email = document.getElementById('email').value;
+      let researchTopic = document.getElementById('research_topic').value;
+      let errorMessage = "";
+
+      // Check for empty fields
+      if (name === "") {
+        errorMessage += "Please enter your name.\n";
+      }
+      if (email === "") {
+        errorMessage += "Please enter your email address.\n";
+      }
+      if (researchTopic === "") {
+        errorMessage += "Please select a research topic.\n";
+      }
+
+      // Check email format (basic validation)
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email !== "" && !emailRegex.test(email)) {
+        errorMessage += "Please enter a valid email address.\n";
+      }
+
+      // Display error message (if any) and prevent form submission
+      if (errorMessage !== "") {
+        alert(errorMessage);
+        return false;
+      }
+
+      return true;
+    }
+  </script>
 </head>
 <body>
   <h1>International Conference on Big Data and Computing - Registration</h1>
-  <form action="process_registration.php" method="post">
+  <form action="process_registration.php" method="post" onsubmit="return validateForm()">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br>
+    <span id="nameError"></span><br>
 
     <label for="email">Email Address:</label>
     <input type="email" id="email" name="email" required><br>
+    <span id="emailError"></span><br>
 
     <label for="research_topic">Research Topic:</label>
     <select id="research_topic" name="research_topic" required>
@@ -25,3 +93,4 @@
   </form>
 </body>
 </html>
+

@@ -94,3 +94,101 @@ Task3
 </body>
 </html>
 
+task4
+a)
+Here's how you can create a database named "conf_db" with the collation set to "utf8_general_ci":
+
+MySQL:
+
+SQL
+CREATE DATABASE conf_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+请谨慎使用代码。
+Explanation:
+
+CREATE DATABASE: This command is used to create a new database in MySQL.
+conf_db: This is the name you want to give to your new database.
+CHARACTER SET utf8: This specifies the character encoding for the database. "utf8" is a widely used encoding that supports a large number of characters.
+COLLATE utf8_general_ci: This defines the collation rules for the database. "utf8_general_ci" is a case-insensitive collation that is suitable for most general-purpose applications.
+Other Database Systems:
+
+The specific syntax for creating a database with character set and collation might differ slightly depending on the database system you're using. However, the general concept remains the same.
+
+Here are some examples for other popular database systems:
+
+PostgreSQL:
+SQL
+CREATE DATABASE conf_db WITH ENCODING='UTF8' COLLATE='en_US.utf8_general_ci';
+请谨慎使用代码。
+Microsoft SQL Server:
+SQL
+CREATE DATABASE conf_db COLLATE Latin1_General_CI_AS;
+ALTER DATABASE conf_db MODIFY FILEGROUP [PRIMARY] SET DEFAULT_COLLATION = Latin1_General_CI_AS;
+请谨慎使用代码。
+Note: In these examples, "Latin1_General_CI_AS" is the equivalent of "utf8_general_ci" for the respective database systems. It's recommended to consult your database system's documentation for the exact commands and supported character sets and collations.
+
+b)
+CREATE TABLE conference (
+  ID INT(11) PRIMARY KEY AUTO_INCREMENT,
+  Name VARCHAR(255) NOT NULL,
+  Email TEXT,
+  Area TEXT,
+  Details TEXT
+);
+
+c)
+
+Here's how you can store user input from the registration form in Task 2 into the "conference" table of the "conf_db" database:
+
+Assuming you have a form that captures user input for conference registration:
+
+Capture User Input: When a user submits the registration form, you'll need to collect their input for each field that corresponds to the columns in the "conference" table. This might involve using HTML form elements and a server-side scripting language like PHP, Python, or Node.js to process the submitted data.
+
+Connect to Database:  Establish a connection to your MySQL database using your preferred programming language's database library.
+
+Prepare SQL Statement: Create a parameterized SQL INSERT statement to insert a new record into the "conference" table. Here's an example:
+
+SQL
+INSERT INTO conference (Name, Email, Area, Details)
+VALUES (?, ?, ?, ?)
+请谨慎使用代码。
+Explanation:
+
+INSERT INTO conference: This specifies that we're inserting data into the "conference" table.
+(Name, Email, Area, Details): This defines the columns where the data will be inserted.
+VALUES (?, ?, ?, ?): These are placeholders for the actual user input values that will be inserted.
+Bind User Input:  Use your programming language's database library to bind the captured user input values to the placeholders in the prepared SQL statement. This helps prevent SQL injection vulnerabilities.
+
+Execute Statement: Execute the prepared SQL statement with the bound user input values.
+
+Here's a general code example (replace <?php and ?> with your specific scripting syntax):
+
+PHP
+<?php
+
+// Connect to database (replace with your connection details)
+$conn = mysqli_connect("localhost", "username", "password", "conf_db");
+
+// Capture user input from the form
+$name = $_POST["name"];
+$email = $_POST["email"];
+$area = $_POST["area"];
+$details = $_POST["details"];
+
+// Prepare SQL statement
+$sql = "INSERT INTO conference (Name, Email, Area, Details) VALUES (?, ?, ?, ?)";
+$stmt = mysqli_prepare($conn, $sql);
+
+// Bind user input to placeholders
+mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $area, $details);
+
+// Execute statement
+mysqli_stmt_execute($stmt);
+
+// Close connection (remember to close after database operations)
+mysqli_close($conn);
+
+?>
+请谨慎使用代码。
+Important Note:
+
+This is a general example, and the specific implementation will vary depending on your chosen programming language and web framework. Make sure to follow proper database security practices like using prepared statements and parameterized queries to prevent SQL injection vulnerabilities.
